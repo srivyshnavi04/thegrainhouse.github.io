@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grain House</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#f5f0e6;
+  color:#0d0d0d;
+  scroll-behavior:smooth;
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0px 20px;
+  position:sticky;
+  top:0;
+  height: 90px;
+  background:#000000;
+  z-index:1000;
+}
+/* header img { height:70px; } */
+header img {
+  height: 100%;
+  max-height: 110px;   /* controls logo size */
+  width: auto;
+  object-fit: contain;
+}
+
+nav a {
+  margin:0 20px;
+  text-decoration:none;
+  color:#cfcfcf;
+}
+nav a:hover { color:#fff; }
+
+/* HERO SECTION */
+.hero {
+  height:100vh;
+  background: url('images/hero-image.jpeg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  padding:80px;
+  position:relative;
+}
+
+/* Overlay */
+.hero::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:500px;
+}
+
+.hero-content h1 {
+  font-size:52px;
+  color:#ffffff;
+}
+
+.hero-content p {
+  color:#e0e0e0;
+  margin-top:10px;
+}
+
+/* BUTTON */
+.btn {
+  padding:14px 28px;
+  border:none;
+  cursor:pointer;
+  margin-top:20px;
+  text-decoration: none;
+}
+.btn {
+  text-decoration: none;   /* removes underline */
+  display: inline-block;
+}
+
+.btn-dark {
+  background: #0f0f0f;
+  color: #fff;
+  padding: 14px 28px;
+  border: none;
+}
+
+/* optional: hover effect */
+.btn-dark:hover {
+  opacity: 0.9;
+}
+.btn-dark {
+  background:#0f0f0f;
+  color:#fff;
+}
+
+/* SECTIONS */
+.section { padding:80px 60px; }
+.light { background:#ffffff; }
+.grey { background:#d9d9d9; }
+.beige { background:#e8e0d5; }
+
+/* GRID */
+.grid {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.card {
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  flex:1;
+  min-width:250px;
+}
+
+.card img {
+  width:100%;
+  border-radius:8px;
+}
+
+/* FEATURES */
+.features {
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.feature {
+  flex:1;
+  min-width:200px;
+}
+
+/* FORM */
+input, textarea {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+/* FOOTER */
+.footer {
+  background:#0f0f0f;
+  padding:40px;
+  color:#888;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+/* CAROUSEL CONTAINER */ .carousel { position: relative; overflow: hidden; max-width: 900px; margin: 40px auto; } /* TRACK */ .carousel-track { display: flex; align-items: center; transition: transform 0.5s ease; } /* REVIEW CARD */ .review { min-width: 280px; margin: 0 20px; text-align: center; opacity: 0.4; transform: scale(0.8); transition: 0.5s; } .review.active { opacity: 1; transform: scale(1.1); } /* PROFILE IMAGE */ .profile { width: 80px; height: 80px; background: #ccc; border-radius: 50%; margin: 0 auto 10px; } /* NAME */ .review h4 { margin: 5px 0; font-size: 18px; } /* JOB */ .review span { font-size: 14px; color: #777; } /* QUOTE */ .review p { margin-top: 10px; font-style: italic; } /* BUTTONS */ .nav { position: absolute; top: 50%; transform: translateY(-50%); background: #0f0f0f; color: #fff; border: none; padding: 10px 15px; cursor: pointer; z-index: 10; } .left { left: 0; } .right { right: 0; }
+ .faq-container { max-width: 800px; margin: 40px auto; } /* CATEGORY */ .faq-category { margin-bottom: 15px; border-bottom: 1px solid #ccc; } /* HEADER */ .faq-header { width: 100%; padding: 15px; font-size: 18px; font-weight: 600; background: none; border: none; text-align: left; display: flex; justify-content: space-between; cursor: pointer; } /* CONTENT */ .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 15px; color: #555; } /* ACTIVE */ .faq-category.active .faq-content { max-height: 500px; padding: 10px 15px 20px; } .arrow { transition: 0.3s; } .faq-category.active .arrow { transform: rotate(180deg); }
+</style>
+ </head>
+
+<body>
+
+<header>
+<img src="images/transparent-logo.png" alt="Logo">
+<nav>
+<a href="#about">About</a>
+<a href="#products">Products</a>
+<a href="#subscriptions">Subscriptions</a>
+<a href="#testimonials">What Customers Say</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>FUTURE SHAPED BY CHOICE.</h1>
+    <p>Fresh millet dosa batter delivered daily. Healthy, preservative-free, and crafted for modern lifestyles.</p>
+    <!--<button class="btn btn-dark">Order Now</button>-->
+    <a href="https://wa.me/919502487169" target="_blank" class="btn btn-dark">
+  Order Now
+</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section beige">
+<h2>About Us</h2>
+<p>The Grain House delivers fresh millet dosa batter every morning. We focus on health, taste, and convenience.</p>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="section light">
+<h2>Our Products</h2>
+<div class="grid">
+<div class="card">
+<img src="https://via.placeholder.com/300" alt="Millet Batter">
+<h3>Millet Dosa Batter</h3>
+<p>Freshly prepared every day.</p>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/300" alt="Chutney">
+<h3>Peanut Chutney</h3>
+<p>Perfect pairing for dosa.</p>
+</div>
+</div>
+</section>
+
+<!-- SUBSCRIPTIONS -->
+<section id="subscriptions" class="section grey">
+<h2>Subscription Plans</h2>
+<div class="grid">
+<div class="card">
+<h3>Daily Plan</h3>
+<p>Fresh batter every day</p>
+</div>
+
+<div class="card">
+<h3>Weekly Plan</h3>
+<p>Flexible weekly delivery</p>
+</div>
+</div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" class="section beige">
+<h2>Why Choose Us</h2>
+<div class="features">
+<div class="feature">
+<h4>Healthy</h4>
+<p>Millets for better nutrition</p>
+</div>
+
+<div class="feature">
+<h4>Fresh</h4>
+<p>Prepared daily</p>
+</div>
+
+<div class="feature">
+<h4>Convenient</h4>
+<p>Doorstep delivery</p>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS 
+<section id="testimonials" class="section light">
+<h2>What Customers Say</h2>
+<div class="grid">
+<div class="card"><p>"Amazing taste!"</p></div>
+<div class="card"><p>"Super convenient and healthy"</p></div>
+</div>
+</section>
+-->
+<!-- TESTIMONIALS SECTION --> <section id="testimonials" class="section light"> <h2 style="text-align:center;">What Customers Say</h2> <div class="carousel"> <!-- LEFT BUTTON --> <button class="nav left" onclick="moveSlide(-1)">&#10094;</button> <!-- TRACK --> <div class="carousel-track" id="carouselTrack"> <!-- REVIEW 1 --> <div class="review"> <div class="profile"></div> <h4>Rahul Sharma</h4> <span>Software Engineer</span> <p>"Amazing taste and freshness!"</p> </div> <!-- REVIEW 2 (CENTER DEFAULT) --> <div class="review active"> <div class="profile"></div> <h4>Anjali Reddy</h4> <span>Marketing Manager</span> <p>"Super convenient and healthy breakfast option."</p> </div> <!-- REVIEW 3 --> <div class="review"> <div class="profile"></div> <h4>Priya Nair</h4> <span>Designer</span> <p>"Loved the quality. Will subscribe again!"</p> </div> <!-- REVIEW 4 --> <div class="review"> <div class="profile"></div> <h4>Kiran Kumar</h4> <span>Entrepreneur</span> <p>"Perfect for busy mornings."</p> </div> </div> <!-- RIGHT BUTTON --> <button class="nav right" onclick="moveSlide(1)">&#10095;</button> </div> </section>
+
+<!-- FAQ 
+<section id="faq" class="section grey">
+<h2>FAQs</h2>
+<p><b>How fresh is the batter?</b><br>Prepared every morning.</p>
+<p><b>Do you deliver daily?</b><br>Yes, based on subscription.</p>
+</section> -->
+<!-- FAQ SECTION --> <section id="faq" class="section grey"> <h2 style="text-align:center;">🌾 FAQ</h2> <div class="faq-container"> <!-- CATEGORY 1 --> <div class="faq-category"> <button class="faq-header"> 🥣 Product & Quality <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>Is the batter freshly made every day?</b><br> Yes, every batch is prepared fresh each morning.</p> <p><b>What millets do you use?</b><br> Foxtail, kodo, little, and barnyard millets.</p> <p><b>Is it healthier than regular batter?</b><br> Yes, millets support better digestion and energy.</p> </div> </div> <!-- CATEGORY 2 --> <div class="faq-category"> <button class="faq-header"> 🚚 Delivery & Subscription <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How does subscription work?</b><br> Based on delivery days with flexible scheduling.</p> <p><b>Can I choose delivery days?</b><br> Yes, anytime between Monday–Sunday.</p> <p><b>Need extra batter?</b><br> Increase quantity with 6 hours notice.</p> </div> </div> <!-- CATEGORY 3 --> <div class="faq-category"> <button class="faq-header"> 🍽 Usage & Storage <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How long does it stay fresh?</b><br> 2–3 days refrigerated.</p> <p><b>What can I make?</b><br> Dosa, uttapam, and more.</p> </div> </div> <!-- CATEGORY 4 --> <div class="faq-category"> <button class="faq-header"> 🌱 Health & Ingredients <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>Is it naturally fermented?</b><br> Yes, no artificial additives.</p> <p><b>Any preservatives?</b><br> No, completely preservative-free.</p> </div> </div> <!-- CATEGORY 5 --> <div class="faq-category"> <button class="faq-header"> 📦 Ordering <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How to order?</b><br> Through WhatsApp.</p> <p><b>Can I try first?</b><br> Yes, start with a smaller plan.</p> <p><b>Traveling?</b><br> Pause or reschedule anytime.</p> </div> </div> </div> </section>
+<!-- CONTACT -->
+<section id="contact" class="section beige">
+<h2>Contact Us</h2>
+<form>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button class="btn btn-dark">Send</button>
+</form>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+<div>
+<p>© 2026 The Grain House</p>
+</div>
+<div>
+<p>Instagram | WhatsApp | Phone</p>
+</div>
+</div>
+<script> let index = 1; const track = document.getElementById("carouselTrack"); const reviews = document.querySelectorAll(".review"); function updateCarousel() { reviews.forEach(r => r.classList.remove("active")); reviews[index].classList.add("active"); const cardWidth = reviews[0].offsetWidth + 40; const containerWidth = document.querySelector(".carousel").offsetWidth; const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2); track.style.transform = `translateX(-${offset}px)`; } function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; updateCarousel(); } window.addEventListener("resize", updateCarousel); updateCarousel(); 
+const categories = document.querySelectorAll(".faq-category"); categories.forEach(cat => { cat.querySelector(".faq-header").addEventListener("click", () => { categories.forEach(c => { if (c !== cat) c.classList.remove("active"); }); cat.classList.toggle("active"); }); });
+</script>
+</body>
+
+</html>
+

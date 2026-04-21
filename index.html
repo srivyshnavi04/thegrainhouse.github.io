@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    *, *::before, *::after {
+  box-sizing: border-box;
+}
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -70,6 +73,7 @@
       position: relative;
       z-index: 2;
       max-width: 500px;
+      width: 100%;
     }
 
     .hero-content h1 {
@@ -85,6 +89,8 @@
     /* BUTTON */
     .btn {
       padding: 14px 28px;
+      max-width: 100%;
+      box-sizing: border-box;
       border: none;
       cursor: pointer;
       margin-top: 20px;
@@ -105,7 +111,7 @@
 
     /* SECTIONS */
     .section {
-      padding: 80px 60px;
+      padding: 80px 40px;
     }
 
     .light { background: #ffffff; }
@@ -194,6 +200,12 @@
         width: 100%;
       }
 
+      .btn {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
       h1 { font-size: 24px; }
       h2 { font-size: 20px; }
 
@@ -261,8 +273,8 @@
     }
 
     .review {
-      min-width: 280px;
-      margin: 40px 20px 0px;
+      min-width: 240px;
+      margin: 20px 0px;
       text-align: center;
       opacity: 0.4;
       transform: scale(0.8);
@@ -356,6 +368,9 @@
     .faq-category.active .arrow {
       transform: rotate(180deg);
     }
+    html, body {
+  overflow-x: hidden;
+}
   </style>
 </head>
 

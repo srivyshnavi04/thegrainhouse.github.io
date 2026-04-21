@@ -262,7 +262,8 @@
     .carousel {
       position: relative;
       overflow: hidden;
-      max-width: 900px;
+      max-width: 100%;
+      width: 100%;
       margin: 40px auto;
     }
 
@@ -270,7 +271,7 @@
       display: flex;
       align-items: center;
       transition: transform 0.5s ease;
-      will-change: transform;
+      justify-content: center;
     }
 
     .review {
@@ -501,38 +502,33 @@
 </div>
 </div>
 <script> 
-let index = 0;
 
+let index = 1;
 const track = document.getElementById("carouselTrack");
 const reviews = document.querySelectorAll(".review");
 
 function updateCarousel() {
-  const container = document.querySelector(".carousel");
-  const card = reviews[0];
+  const cardWidth = reviews[0].offsetWidth + 20; // includes side gap
+  const centerOffset = (window.innerWidth - reviews[0].offsetWidth) / 2;
 
-  const containerWidth = container.offsetWidth;
-  const cardWidth = card.offsetWidth;
+  track.style.transform =
+    `translateX(${centerOffset - index * cardWidth}px)`;
 
-  // center calculation (no magic numbers)
-  const offset = (cardWidth + 20) * index - (containerWidth - cardWidth) / 2;
-
-  track.style.transform = `translateX(-${offset}px)`;
-
-  reviews.forEach(r => r.classList.remove("active"));
-  reviews[index].classList.add("active");
+  reviews.forEach((review, i) => {
+    review.classList.toggle("active", i === index);
+  });
 }
 
 function moveSlide(direction) {
   index += direction;
 
-  // loop instead of stopping
+  // infinite loop
   if (index < 0) index = reviews.length - 1;
   if (index >= reviews.length) index = 0;
 
   updateCarousel();
 }
 
-// initial load
 window.addEventListener("load", updateCarousel);
 window.addEventListener("resize", updateCarousel);
 </script>

@@ -273,12 +273,13 @@
     }
 
     .review {
-      min-width: 240px;
-      margin: 20px 0px;
+      min-width: 260px;
+      margin: 20px 10px;
       text-align: center;
       opacity: 0.4;
       transform: scale(0.8);
       transition: 0.5s;
+      flex-shrink: 0;
     }
 
     .review.active {
@@ -498,8 +499,41 @@
 <p>Instagram | WhatsApp | Phone</p>
 </div>
 </div>
-<script> let index = 1; const track = document.getElementById("carouselTrack"); const reviews = document.querySelectorAll(".review"); function updateCarousel() { reviews.forEach(r => r.classList.remove("active")); reviews[index].classList.add("active"); const cardWidth = reviews[0].offsetWidth + 40; const containerWidth = document.querySelector(".carousel").offsetWidth; const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2); track.style.transform = `translateX(-${offset}px)`; } function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; updateCarousel(); } window.addEventListener("resize", updateCarousel); updateCarousel(); 
-const categories = document.querySelectorAll(".faq-category"); categories.forEach(cat => { cat.querySelector(".faq-header").addEventListener("click", () => { categories.forEach(c => { if (c !== cat) c.classList.remove("active"); }); cat.classList.toggle("active"); }); });
+<script> 
+let index = 0;
+
+const track = document.getElementById("carouselTrack");
+const reviews = document.querySelectorAll(".review");
+
+function updateCarousel() {
+  const container = document.querySelector(".carousel");
+  const card = reviews[0];
+
+  const containerWidth = container.offsetWidth;
+  const cardWidth = card.offsetWidth;
+
+  // center calculation (no magic numbers)
+  const offset = (cardWidth + 20) * index - (containerWidth - cardWidth) / 2;
+
+  track.style.transform = `translateX(-${offset}px)`;
+
+  reviews.forEach(r => r.classList.remove("active"));
+  reviews[index].classList.add("active");
+}
+
+function moveSlide(direction) {
+  index += direction;
+
+  // loop instead of stopping
+  if (index < 0) index = reviews.length - 1;
+  if (index >= reviews.length) index = 0;
+
+  updateCarousel();
+}
+
+// initial load
+window.addEventListener("load", updateCarousel);
+window.addEventListener("resize", updateCarousel);
 </script>
 </body>
 

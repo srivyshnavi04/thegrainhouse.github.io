@@ -261,7 +261,7 @@
     /* CAROUSEL */
     .carousel {
       position: relative;
-      overflow: hidden;
+      overflow: visible; //
       max-width: 100%;
       width: 100%;
       margin: 40px auto;
@@ -272,6 +272,7 @@
       align-items: center;
       transition: transform 0.5s ease;
       justify-content: center;
+      overflow: hidden;
     }
 
     .review {
@@ -321,14 +322,14 @@
       background: #0f0f0f;
       color: #fff;
       border: none;
-      padding: 10px 15px;
+      padding: 10px;
       cursor: pointer;
       z-index: 10;
   border-radius: 50%;
     }
 
-    .left { left: 10px; }
-    .right { right: 10px; }
+    .left { left: 5px; }
+    .right { right: 5px; }
 
     .faq-container {
       max-width: 800px;

@@ -476,7 +476,31 @@
 </section> -->
 
 <!-- TESTIMONIALS SECTION --> 
-  <section id="testimonials" class="section light"> <h2 style="text-align:center;">What Customers Say</h2> <div class="carousel"> <!-- LEFT BUTTON --> <button class="nav left" onclick="moveSlide(-1)">&#10094;</button> <!-- TRACK --> <div class="carousel-track" id="carouselTrack"> <!-- REVIEW 1 --> <div class="review"> <div class="profile"></div> <h4>Rahul Sharma</h4> <span>Software Engineer</span> <p>"Amazing taste and freshness!"</p> </div> <!-- REVIEW 2 (CENTER DEFAULT) --> <div class="review active"> <div class="profile"></div> <h4>Anjali Reddy</h4> <span>Marketing Manager</span> <p>"Super convenient and healthy breakfast option."</p> </div> <!-- REVIEW 3 --> <div class="review"> <div class="profile"></div> <h4>Priya Nair</h4> <span>Designer</span> <p>"Loved the quality. Will subscribe again!"</p> </div> <!-- REVIEW 4 --> <div class="review"> <div class="profile"></div> <h4>Kiran Kumar</h4> <span>Entrepreneur</span> <p>"Perfect for busy mornings."</p> </div> </div> <!-- RIGHT BUTTON --> <button class="nav right" onclick="moveSlide(1)">&#10095;</button> </div> </section>
+  <section id="testimonials" class="section light"> 
+  <h2 style="text-align:center;">What Customers Say</h2> 
+  <div class="carousel"> 
+    <!-- LEFT BUTTON --> 
+    <button class="nav left" onclick="moveSlide(-1)">&#10094;</button> 
+    <!-- TRACK --> 
+    <div class="carousel-track" id="carouselTrack"> 
+      <!-- REVIEW 1 --> 
+      <div class="review"> 
+        <div class="profile"></div> 
+        <h4>Rahul Sharma</h4> <span>Software Engineer</span> <p>"Amazing taste and freshness!"</p> 
+      </div> 
+      <!-- REVIEW 2 (CENTER DEFAULT) --> 
+      <div class="review active"> <div class="profile"></div>
+        <h4>Anjali Reddy</h4> <span>Marketing Manager</span> <p>"Super convenient and healthy breakfast option."</p> </div> 
+      <!-- REVIEW 3 --> <div class="review"> 
+        <div class="profile"></div> <h4>Priya Nair</h4> <span>Designer</span> <p>"Loved the quality. Will subscribe again!"</p> </div> 
+      <!-- REVIEW 4 --> <div class="review"> <div class="profile"></div> <h4>Kiran Kumar</h4> <span>Entrepreneur</span> <p>"Perfect for busy mornings."</p> </div> 
+    <div class="review">
+        <div class=<span>Doc></div>
+        <h4>Sneha Patel</h4>
+        <span>Doctor</span>
+         <p>"Healthy and super fresh every day!" </"Healthy and super fresh every day!"</p>
+      </div> </div>
+    <!-- RIGHT BUTTON --> <button class="nav right" onclick="moveSlide(1)">&#10095;</button> </div> </section>
 
 <!-- FAQ -->
 <section id="faq" class="section grey">
@@ -506,18 +530,22 @@
 </div>
 </div>
 <script> 
-let index = 1; const track = document.getElementById("carouselTrack"); 
+let index = 1; 
+  const track = document.getElementById("carouselTrack"); 
   const reviews = document.querySelectorAll(".review"); 
   function updateCarousel() { reviews.forEach(r => r.classList.remove("active")); 
-                             reviews[index].classList.add("active"); const cardWidth = reviews[0].offsetWidth + 40; 
-                             const containerWidth = document.querySelector(".carousel").offsetWidth; 
-                             const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2); 
+                             reviews[index].classList.add("active"); 
+                             const cardWidth = reviews[0].offsetWidth + 20; 
+                             //const containerWidth = document.querySelector(".carousel").offsetWidth; 
+                             const offset = (index - 1) * reviewWidth; 
                              track.style.transform = `translateX(-${offset}px)`; 
                             }
-  function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
-                                 updateCarousel(); 
-                                } 
+  //function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
+      //                           updateCarousel(); 
+           //                     } 
+  function moveSlide(direction) { index += direction; if (index >= reviews.length - 1) { index = 1; } if (index <= 0) { index = reviews.length - 2; } updateCarousel(); }
   window.addEventListener("resize", updateCarousel); updateCarousel();
+  
   const faqHeaders = document.querySelectorAll(".faq-header");
 
   faqHeaders.forEach(header => {

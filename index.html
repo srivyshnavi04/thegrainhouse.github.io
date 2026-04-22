@@ -516,7 +516,24 @@ let index = 1; const track = document.getElementById("carouselTrack");
   function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
                                  updateCarousel(); 
                                 } 
-  window.addEventListener("resize", updateCarousel); updateCarousel(); 
+  window.addEventListener("resize", updateCarousel); updateCarousel();
+  const faqHeaders = document.querySelectorAll(".faq-header");
+
+  faqHeaders.forEach(header => {
+    header.addEventListener("click", () => {
+      const parent = header.parentElement;
+
+      // close others (optional - accordion style)
+      document.querySelectorAll(".faq-category").forEach(item => {
+        if (item !== parent) {
+          item.classList.remove("active");
+        }
+      });
+
+      // toggle current
+      parent.classList.toggle("active");
+    });
+  });
 
 </script>
 </body>

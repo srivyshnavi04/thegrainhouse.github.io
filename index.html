@@ -258,78 +258,152 @@
       }
     }
 
-    /* CAROUSEL */
-    .carousel {
-      position: relative;
-      overflow: visible; //
-      max-width: 100%;
-      width: 100%;
-      margin: 40px auto;
-    }
+    h2 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 2.5rem;
+  }
 
-    .carousel-track {
-      display: flex;
-      align-items: center;
-      transition: transform 0.5s ease;
-      justify-content: center;
-      overflow: hidden;
-    }
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
 
-    .review {
-      min-width: 260px;
-        /*flex: 0 0 240px;*/
-      margin: 20px 10px;
-      text-align: center;
-      opacity: 0.4;
-      transform: scale(0.8);
-      transition: 0.5s;
-      flex-shrink: 0;
-    }
+  .arrow-btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
+    transition: background 0.2s;
+    z-index: 5;
+  }
 
-    .review.active {
-      opacity: 1;
-      transform: scale(1.1);
-      transform-origin: center bottom;
-    }
+  .arrow-btn:hover { background: #333; }
+  .arrow-btn:disabled { background: #ccc; cursor: not-allowed; }
 
-    .profile {
-      width: 80px;
-      height: 80px;
-      background: #ccc;
-      border-radius: 50%;
-      margin: 0 auto 10px;
-    }
+  .track-outer {
+    flex: 1;
+    overflow: hidden;
+    padding: 1rem 0 1.5rem;
+  }
 
-    .review h4 {
-      margin: 5px 0;
-      font-size: 18px;
-    }
+  .track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    .review span {
-      font-size: 14px;
-      color: #777;
-    }
+  .card {
+    flex: 0 0 33.333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    transition: all 0.4s ease;
+  }
 
-    .review p {
-      margin-top: 10px;
-      font-style: italic;
-    }
+  .card.side {
+    opacity: 0.38;
+    transform: scale(0.87);
+  }
 
-    .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #0f0f0f;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      z-index: 10;
-  border-radius: 50%;
-    }
+  .card.active {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-    .left { left: 0; }
-    .right { right: 0; }
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #d4d4d4;
+    overflow: hidden;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card.active .avatar {
+    background: #b8b8b8;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: -2px;
+  }
+
+  .name {
+    font-size: 15px;
+    color: #111;
+    margin-bottom: 0.15rem;
+  }
+
+  .card.side .name { font-weight: 400; color: #999; }
+  .card.active .name { font-weight: 700; }
+
+  .role {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 0.65rem;
+  }
+
+  .card.active .role { color: #888; }
+
+  .review {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  .card.side .review { color: #bbb; }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 1.25rem;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .dot.active {
+    background: #111;
+    transform: scale(1.25);
+  }
+
 
     .faq-container {
       max-width: 800px;
@@ -474,34 +548,18 @@
 <div class="card"><p>"Super convenient and healthy"</p></div>
 </div>
 </section> -->
+<!-- Testimonials -->
+<h2>What Customers Say</h2>
 
-<!-- TESTIMONIALS SECTION --> 
-  <section id="testimonials" class="section light"> 
-  <h2 style="text-align:center;">What Customers Say</h2> 
-  <div class="carousel"> 
-    <!-- LEFT BUTTON --> 
-    <button class="nav left" onclick="moveSlide(-1)">&#10094;</button> 
-    <!-- TRACK --> 
-    <div class="carousel-track" id="carouselTrack"> 
-      <!-- REVIEW 1 --> 
-      <div class="review"> 
-        <div class="profile"></div> 
-        <h4>Rahul Sharma</h4> <span>Software Engineer</span> <p>"Amazing taste and freshness!"</p> 
-      </div> 
-      <!-- REVIEW 2 (CENTER DEFAULT) --> 
-      <div class="review active"> <div class="profile"></div>
-        <h4>Anjali Reddy</h4> <span>Marketing Manager</span> <p>"Super convenient and healthy breakfast option."</p> </div> 
-      <!-- REVIEW 3 --> <div class="review"> 
-        <div class="profile"></div> <h4>Priya Nair</h4> <span>Designer</span> <p>"Loved the quality. Will subscribe again!"</p> </div> 
-      <!-- REVIEW 4 --> <div class="review"> <div class="profile"></div> <h4>Kiran Kumar</h4> <span>Entrepreneur</span> <p>"Perfect for busy mornings."</p> </div> 
-    <div class="review">
-        <div class=<span>Doc></div>
-        <h4>Sneha Patel</h4>
-        <span>Doctor</span>
-         <p>"Healthy and super fresh every day!" </"Healthy and super fresh every day!"</p>
-      </div> </div>
-    <!-- RIGHT BUTTON --> <button class="nav right" onclick="moveSlide(1)">&#10095;</button> </div> </section>
+<div class="carousel-wrapper">
+  <button class="arrow-btn" id="prevBtn" aria-label="Previous">&#8249;</button>
+  <div class="track-outer">
+    <div class="track" id="track"></div>
+  </div>
+  <button class="arrow-btn" id="nextBtn" aria-label="Next">&#8250;</button>
+</div>
 
+<div class="dots" id="dots"></div>
 <!-- FAQ 
 <section id="faq" class="section grey">
 <h2>FAQs</h2>
@@ -532,32 +590,109 @@
 </div>
 </div>
 <script> 
+
 /* ===== CAROUSEL FIX ===== */
-let index = 0;
+//let index = 0;
 
-const track = document.getElementById("carouselTrack");
-const reviews = document.querySelectorAll(".review");
+//const track = document.getElementById("carouselTrack");
+//const reviews = document.querySelectorAll(".review");
 
-function updateCarousel() {
-  reviews.forEach(r => r.classList.remove("active"));
-  reviews[index].classList.add("active");
+//function updateCarousel() {
+  //reviews.forEach(r => r.classList.remove("active"));
+  //reviews[index].classList.add("active");
 
-  const cardWidth = reviews[0].offsetWidth + 20;
-  const containerWidth = document.querySelector(".carousel").offsetWidth;
+  //const cardWidth = reviews[0].offsetWidth + 20;
+  //const containerWidth = document.querySelector(".carousel").offsetWidth;
 
-  const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2);
+  //const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2);
 
-  track.style.transform = `translateX(-${offset}px)`;
+  //track.style.transform = `translateX(-${offset}px)`;
+//}
+
+//function moveSlide(direction) {
+  //index = (index + direction + reviews.length) % reviews.length; // ✅ LOOP FIX
+  //updateCarousel();
+//}
+
+//window.addEventListener("resize", updateCarousel);
+//updateCarousel();
+  const reviews = [
+  { name: "Rahul",  role: "Manager",   image: null, review: '"Amazing taste!"' },
+  { name: "Anjali", role: "Designer",  image: null, review: '"Super healthy!"' },
+  { name: "Priya",  role: "Developer", image: null, review: '"Loved it!"' },
+  { name: "Arjun",  role: "Founder",   image: null, review: '"Highly recommend!"' },
+  { name: "Sneha",  role: "Analyst",   image: null, review: '"Fresh and delicious!"' },
+  { name: "Vikram", role: "Engineer",  image: null, review: '"Best service ever!"' }
+];
+
+let active = 1;
+const track  = document.getElementById('track');
+const dotsEl = document.getElementById('dots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function headSVG(opacity) {
+  return `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="21" r="13" fill="rgba(255,255,255,${opacity})"/>
+    <path d="M4 64c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="rgba(255,255,255,${opacity})"/>
+  </svg>`;
 }
 
-function moveSlide(direction) {
-  index = (index + direction + reviews.length) % reviews.length; // ✅ LOOP FIX
-  updateCarousel();
+function build() {
+  track.innerHTML = '';
+  dotsEl.innerHTML = '';
+
+  reviews.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="avatar">${r.image ? `<img src="${r.image}" alt="${r.name}"/>` : headSVG(0.6)}</div>
+      <p class="name">${r.name}</p>
+      <p class="role">${r.role}</p>
+      <p class="review">${r.review}</p>
+    `;
+    track.appendChild(card);
+
+    const dot = document.createElement('button');
+    dot.className = 'dot';
+    dot.setAttribute('aria-label', `Review ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  refresh();
 }
 
-window.addEventListener("resize", updateCarousel);
-updateCarousel();
+function refresh() {
+  const cards = track.querySelectorAll('.card');
+  const dots  = dotsEl.querySelectorAll('.dot');
 
+  cards.forEach((c, i) => {
+    c.classList.toggle('active', i === active);
+    c.classList.toggle('side',   i !== active);
+  });
+
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+
+  // Keep active card in center slot (slot index 1 of the 3 visible)
+  const pct = -(active - 1) * 33.333;
+  track.style.transform = `translateX(${pct}%)`;
+
+  prevBtn.disabled = active === 0;
+  nextBtn.disabled = active === reviews.length - 1;
+}
+
+function goTo(i) {
+  active = Math.max(0, Math.min(reviews.length - 1, i));
+  refresh();
+}
+
+prevBtn.addEventListener('click', () => goTo(active - 1));
+nextBtn.addEventListener('click', () => goTo(active + 1));
+
+build();
+
+  
 /* ===== FAQ FIX ===== */
 const faqHeaders = document.querySelectorAll(".faq-header");
 

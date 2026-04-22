@@ -536,14 +536,14 @@ let index = 1;
   function updateCarousel() { reviews.forEach(r => r.classList.remove("active")); 
                              reviews[index].classList.add("active"); 
                              const cardWidth = reviews[0].offsetWidth + 20; 
-                             //const containerWidth = document.querySelector(".carousel").offsetWidth; 
+                             const containerWidth = document.querySelector(".carousel").offsetWidth; 
                              const offset = (index - 1) * reviewWidth; 
                              track.style.transform = `translateX(-${offset}px)`; 
                             }
-  //function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
-      //                           updateCarousel(); 
-           //                     } 
-  function moveSlide(direction) { index += direction; if (index >= reviews.length - 1) { index = 1; } if (index <= 0) { index = reviews.length - 2; } updateCarousel(); }
+  function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
+                                 updateCarousel(); 
+                            } 
+  //function moveSlide(direction) { index += direction; if (index >= reviews.length - 1) { index = 1; } if (index <= 0) { index = reviews.length - 2; } updateCarousel(); }
   window.addEventListener("resize", updateCarousel); updateCarousel();
   
   const faqHeaders = document.querySelectorAll(".faq-header");

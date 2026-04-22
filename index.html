@@ -532,39 +532,52 @@
 </div>
 </div>
 <script> 
-let index = 1; 
-  const track = document.getElementById("carouselTrack"); 
-  const reviews = document.querySelectorAll(".review"); 
-  function updateCarousel() { reviews.forEach(r => r.classList.remove("active")); 
-                             reviews[index].classList.add("active"); 
-                             const cardWidth = reviews[0].offsetWidth + 20; 
-                             const containerWidth = document.querySelector(".carousel").offsetWidth; 
-                             const offset = (index - 1) * reviewWidth; 
-                             track.style.transform = `translateX(-${offset}px)`; 
-                            }
-  function moveSlide(direction) { index += direction; if (index < 0) index = 0; if (index > reviews.length - 1) index = reviews.length - 1; 
-                                 updateCarousel(); 
-                            } 
-  //function moveSlide(direction) { index += direction; if (index >= reviews.length - 1) { index = 1; } if (index <= 0) { index = reviews.length - 2; } updateCarousel(); }
-  window.addEventListener("resize", updateCarousel); updateCarousel();
-  
-  const faqHeaders = document.querySelectorAll(".faq-header");
+<script>
+/* ===== CAROUSEL FIX ===== */
+let index = 0;
 
-  faqHeaders.forEach(header => {
-    header.addEventListener("click", () => {
-      const parent = header.parentElement;
+const track = document.getElementById("carouselTrack");
+const reviews = document.querySelectorAll(".review");
 
-      // close others (optional - accordion style)
-      document.querySelectorAll(".faq-category").forEach(item => {
-        if (item !== parent) {
-          item.classList.remove("active");
-        }
-      });
+function updateCarousel() {
+  reviews.forEach(r => r.classList.remove("active"));
+  reviews[index].classList.add("active");
 
-      // toggle current
-      parent.classList.toggle("active");
+  const cardWidth = reviews[0].offsetWidth + 20;
+  const containerWidth = document.querySelector(".carousel").offsetWidth;
+
+  const offset = index * cardWidth - (containerWidth / 2 - cardWidth / 2);
+
+  track.style.transform = `translateX(-${offset}px)`;
+}
+
+function moveSlide(direction) {
+  index = (index + direction + reviews.length) % reviews.length; // ✅ LOOP FIX
+  updateCarousel();
+}
+
+window.addEventListener("resize", updateCarousel);
+updateCarousel();
+
+/* ===== FAQ FIX ===== */
+const faqHeaders = document.querySelectorAll(".faq-header");
+
+faqHeaders.forEach(header => {
+  header.addEventListener("click", () => {
+    const parent = header.parentElement;
+
+    // close others
+    document.querySelectorAll(".faq-category").forEach(item => {
+      if (item !== parent) {
+        item.classList.remove("active");
+      }
     });
+
+    // toggle current
+    parent.classList.toggle("active");
   });
+});
+</script>
 
 </script>
 </body>

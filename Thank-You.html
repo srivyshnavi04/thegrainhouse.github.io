@@ -34,6 +34,35 @@
     width: 100%;
     z-index: 1;
   }
+ .top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #000; /* BLACK */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fff; /* WHITE ICON */
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
 
   .checkmark {
     width: 72px;
@@ -104,6 +133,16 @@
 </style>
 </head>
 <body>
+ <!--NAVBAR-->
+ <header class="top-nav">
+  <a href="index.html" class="home-icon" title="Go to Home">
+    <!-- Home Icon SVG -->
+    <svg viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5"></path>
+      <path d="M5 9.5V20h14V9.5"></path>
+    </svg>
+  </a>
+</header>
 
 <canvas id="confetti-canvas"></canvas>
 

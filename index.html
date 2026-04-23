@@ -630,7 +630,10 @@
       color: var(--grey-text);
       font-weight: 300;
     }
-
+.testimonials-section {
+  margin-top: 80px;   /* space from subscriptions */
+  margin-bottom: 80px;
+}
 
 
     @media (max-width: 768px) {
@@ -946,7 +949,7 @@
   <header>
     <img src="images/transparent-logo.png" alt="Logo">
     <nav>
-      <a href="#about">About</a>
+      <a href="#about">About Us</a>
       <a href="#products">Products</a>
       <a href="#subscriptions">Subscriptions</a>
       <a href="#testimonials">What Customers Say</a>
@@ -975,7 +978,7 @@ We didn’t build a health brand. We rebuilt a food habit — one that was alway
 <p></p>
 What makes The Grain House different is not just what we make — it’s what we refuse to do. We don’t mix grains to cut costs, don’t add preservatives to extend shelf life, and don’t batch-produce and store. Every batch is single-grain because each millet has its own nutritional identity worth preserving, and every delivery is made the same day because freshness isn’t a feature — it’s the whole point.</p>
 </section> -->
-  <section class="about-section">
+  <section id="about" class="about-section">
   <h2 class="about-title">About Us</h2>
 
   <div class="about-blocks">
@@ -1014,7 +1017,7 @@ What makes The Grain House different is not just what we make — it’s what we
 </div>
 </section>
 -->
-  <section class="products-section">
+  <section id="products" class="products-section">
   <h2 class="section-title">Our Products</h2>
 
   <!-- Product 1: Image LEFT, Text RIGHT -->
@@ -1116,6 +1119,7 @@ What makes The Grain House different is not just what we make — it’s what we
 </div>
 </section>
 -->
+  <section id="subscriptions">
   <h2 class="section-title">Subscription Plans</h2>
 <p class="section-sub">Choose a plan that fits your routine. We'll handle the rest.</p>
 
@@ -1242,7 +1246,7 @@ What makes The Grain House different is not just what we make — it’s what we
   </div>
 
 </div>
-
+  </section>
 <!-- BENEFITS
 <section id="benefits" class="section beige">
 <h2>Why Choose Us</h2>
@@ -1273,6 +1277,7 @@ What makes The Grain House different is not just what we make — it’s what we
 </div>
 </section> -->
 <!-- Testimonials -->
+<section id="testimonials" class="testimonials-section">
 <h2>What Customers Say</h2>
 
 <div class="carousel-wrapper">
@@ -1282,6 +1287,7 @@ What makes The Grain House different is not just what we make — it’s what we
   </div>
   <button class="arrow-btn" id="nextBtn" aria-label="Next">&#8250;</button>
 </div>
+</section>
 
 <div class="dots" id="dots"></div>
 <!-- FAQ 
@@ -1292,7 +1298,7 @@ What makes The Grain House different is not just what we make — it’s what we
 </section> -->
   
 <!-- FAQ SECTION -->
-<div class="faq-section">
+<div id="faq" class="faq-section">
   <div class="faq-wrapper">
   <div class="faq-header">
     <h1>Frequently Asked Questions</h1>

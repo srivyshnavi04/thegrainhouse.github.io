@@ -463,6 +463,163 @@
     color: #888070;
     margin-top: 2px;
   }
+:root {
+      --beige:      #f5f0e8;
+      --beige-dark: #e8e0d0;
+      --white:      #ffffff;
+      --grey-light: #f4f4f4;
+      --grey-mid:   #d4d4d4;
+      --grey-text:  #6b6b6b;
+      --charcoal:   #1a1a1a;
+      --accent:     #444444;
+      --accent-border: #cccccc;
+      --active-bg:  #1a1a1a;
+      --active-text:#f5f0e8;
+      --radius:     10px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.07);
+    }
+.faq-wrapper {
+      max-width: 960px;
+      width: 100%;
+    }
+
+    /* Header */
+    .faq-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .faq-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .faq-header p {
+      font-size: 0.92rem;
+      color: var(--grey-text);
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+
+    /* Main layout */
+    .faq-body {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* Left nav */
+    .faq-nav {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--beige-dark);
+    }
+
+    .faq-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--beige-dark);
+      transition: background 0.2s, color 0.2s;
+      user-select: none;
+    }
+    .faq-nav-item:last-child { border-bottom: none; }
+    .faq-nav-item:hover { background: var(--grey-light); }
+    .faq-nav-item.active {
+      background: var(--active-bg);
+      color: var(--active-text);
+      font-weight: 500;
+    }
+    .faq-nav-item .arrow {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      transition: transform 0.2s;
+    }
+    .faq-nav-item.active .arrow { opacity: 1; }
+
+    /* Right accordion */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--beige-dark);
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--beige-dark);
+      transition: background 0.2s;
+    }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      user-select: none;
+      gap: 16px;
+    }
+    .faq-question:hover { background: var(--grey-light); }
+
+    .faq-item.open .faq-question {
+      border-bottom: 1px solid var(--beige-dark);
+      background: var(--grey-light);
+    }
+
+    .faq-toggle {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+      background: transparent;
+    }
+    .faq-item.open .faq-toggle {
+      background: var(--active-bg);
+      border-color: var(--active-bg);
+      color: var(--active-text);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 16px 24px 20px;
+    }
+    .faq-answer p {
+      font-size: 0.865rem;
+      line-height: 1.7;
+      color: var(--grey-text);
+      font-weight: 300;
+    }
 
 
 
@@ -474,6 +631,8 @@
       * {
         box-sizing: border-box;
       }
+      .faq-body { grid-template-columns: 1fr; }
+
       .plans-grid { grid-template-columns: 1fr; }
     .section-title { font-size: 2rem; }
 
@@ -1123,7 +1282,35 @@ What makes The Grain House different is not just what we make — it’s what we
 </section> -->
   
 <!-- FAQ SECTION -->
-  <section id="faq" class="section grey"> <h2 style="text-align:center;"> FAQ</h2> <div class="faq-container"> <!-- CATEGORY 1 --> <div class="faq-category"> <button class="faq-header"> 🥣 Product & Quality <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>Is the batter freshly made every day?</b><br> Yes, every batch is prepared fresh each morning.</p> <p><b>What millets do you use?</b><br> Foxtail, kodo, little, and barnyard millets.</p> <p><b>Is it healthier than regular batter?</b><br> Yes, millets support better digestion and energy.</p> </div> </div> <!-- CATEGORY 2 --> <div class="faq-category"> <button class="faq-header"> 🚚 Delivery & Subscription <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How does subscription work?</b><br> Based on delivery days with flexible scheduling.</p> <p><b>Can I choose delivery days?</b><br> Yes, anytime between Monday–Sunday.</p> <p><b>Need extra batter?</b><br> Increase quantity with 6 hours notice.</p> </div> </div> <!-- CATEGORY 3 --> <div class="faq-category"> <button class="faq-header"> 🍽 Usage & Storage <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How long does it stay fresh?</b><br> 2–3 days refrigerated.</p> <p><b>What can I make?</b><br> Dosa, uttapam, and more.</p> </div> </div> <!-- CATEGORY 4 --> <div class="faq-category"> <button class="faq-header"> 🌱 Health & Ingredients <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>Is it naturally fermented?</b><br> Yes, no artificial additives.</p> <p><b>Any preservatives?</b><br> No, completely preservative-free.</p> </div> </div> <!-- CATEGORY 5 --> <div class="faq-category"> <button class="faq-header"> 📦 Ordering <span class="arrow">▼</span> </button> <div class="faq-content"> <p><b>How to order?</b><br> Through WhatsApp.</p> <p><b>Can I try first?</b><br> Yes, start with a smaller plan.</p> <p><b>Traveling?</b><br> Pause or reschedule anytime.</p> </div> </div> </div> </section>
+  <div class="faq-wrapper">
+  <div class="faq-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>Trusted by thousands of organizations across the globe</p>
+  </div>
+
+  <div class="faq-body">
+
+    <!-- Left Navigation -->
+    <nav class="faq-nav" id="faqNav">
+      <div class="faq-nav-item active" data-category="product">
+        🌾 Product &amp; Freshness <span class="arrow">›</span>
+      </div>
+      <div class="faq-nav-item" data-category="plans">
+        📦 Plans &amp; Pricing <span class="arrow">›</span>
+      </div>
+      <div class="faq-nav-item" data-category="delivery">
+        🚚 Delivery &amp; Flexibility <span class="arrow">›</span>
+      </div>
+    </nav>
+
+    <!-- Right Accordion -->
+    <div class="faq-accordion" id="faqAccordion">
+      <!-- populated by JS -->
+    </div>
+
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="contact" class="section beige">
 <h2>Contact Us</h2>
@@ -1249,25 +1436,116 @@ build();
 
   
 /* ===== FAQ FIX ===== */
-const faqHeaders = document.querySelectorAll(".faq-header");
+//const faqHeaders = document.querySelectorAll(".faq-header");
 
-faqHeaders.forEach(header => {
-  header.addEventListener("click", () => {
-    const parent = header.parentElement;
+//faqHeaders.forEach(header => {
+ // header.addEventListener("click", () => {
+   // const parent = header.parentElement;
 
     // close others
-    document.querySelectorAll(".faq-category").forEach(item => {
-      if (item !== parent) {
-        item.classList.remove("active");
-      }
-    });
+  //  document.querySelectorAll(".faq-category").forEach(item => {
+     // if (item !== parent) {
+     //   item.classList.remove("active");
+    //  }
+   // });
 
     // toggle current
-    parent.classList.toggle("active");
+   // parent.classList.toggle("active");
+ // });
+//});
+
+const faqData = {
+    product: [
+      {
+        q: "Is the batter freshly made every day?",
+        a: "Yes, every batch is prepared fresh each morning and delivered the same day."
+      },
+      {
+        q: "How long does the batter stay fresh?",
+        a: "It stays fresh for 4–5 days when refrigerated."
+      },
+      {
+        q: "Is your batter healthier than regular dosa batter?",
+        a: "Millets support better digestion, sustained energy, and overall wellness, making them a better alternative to refined grains."
+      },
+      {
+        q: "Do you add preservatives or additives?",
+        a: "No, our batter is completely free from preservatives and unnecessary additives.",
+        open: true
+      }
+    ],
+    plans: [
+      {
+        q: "How does the monthly plan work? Is it based on calendar days?",
+        a: "Our plans are based on delivery days, not calendar dates. For example, a 2-day plan includes 8 delivery days, and your plan continues until all delivery days are completed.",
+        open: true
+      },
+      {
+        q: "Do you offer plans for different household sizes?",
+        a: "Yes, we have plans designed for individuals/couples and families, based on your weekly needs."
+      }
+    ],
+    delivery: [
+      {
+        q: "How can I place an order?",
+        a: "You can place your order directly through WhatsApp.",
+        open: true
+      },
+      {
+        q: "Can I choose my delivery days?",
+        a: "Yes, you can select and change your delivery days anytime between Monday and Sunday."
+      },
+      {
+        q: "What if I'm traveling or out of station?",
+        a: "You can pause, skip, or reschedule deliveries anytime — so your plan works around your routine."
+      },
+      {
+        q: "What if I need extra batter?",
+        a: "You can increase your quantity with just 6 hours' notice — perfect for unexpected needs."
+      }
+    ]
+  };
+
+  const accordion = document.getElementById('faqAccordion');
+  const navItems = document.querySelectorAll('.faq-nav-item');
+
+  function renderCategory(category) {
+    const items = faqData[category] || [];
+    accordion.innerHTML = '';
+    items.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'faq-item' + (item.open ? ' open' : '');
+      div.innerHTML = `
+        <div class="faq-question">
+          <span>${item.q}</span>
+          <span class="faq-toggle">${item.open ? '−' : '+'}</span>
+        </div>
+        <div class="faq-answer"><p>${item.a}</p></div>
+      `;
+      div.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = div.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-toggle').textContent = '+';
+        });
+        if (!isOpen) {
+          div.classList.add('open');
+          div.querySelector('.faq-toggle').textContent = '−';
+        }
+      });
+      accordion.appendChild(div);
+    });
+  }
+
+  navItems.forEach(nav => {
+    nav.addEventListener('click', () => {
+      navItems.forEach(n => n.classList.remove('active'));
+      nav.classList.add('active');
+      renderCategory(nav.dataset.category);
+    });
   });
-});
 
-
+  renderCategory('product');
 
 </script>
 </body>

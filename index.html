@@ -57,7 +57,16 @@
       align-items: center;
       padding: clamp(40px, 5vw, 100px) clamp(20px, 8vw, 120px);
       position: relative;
+      overflow: hidden;
     }
+    .hero-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;          /* 👈 KEY: prevents cropping */
+  object-fit: contain;  /* 👈 full packet always visible */
+}
 
     .hero::after {
       content: "";
@@ -69,13 +78,14 @@
       background: rgba(0, 0, 0, 0);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 500px;
-      width: 100%;
-    }
-
+   
+.hero-content {
+  position: absolute;
+  left: 8%;
+  bottom: 15%;
+  max-width: 420px;
+  z-index: 2;
+}
     .hero-content h1 {
       font-size: 52px;
       color: #000000;
@@ -662,16 +672,20 @@
         justify-content: center;
         text-align: center;
         gap: 15px;
+        height: 100vh;
       }
 
-      .hero img {
+      .hero-img {
         width: 100%;
         max-width: 100%;
-        height: auto;
+        
+        height: 85%;     /* slightly smaller for mobile */
+    right: -20px;
       }
 
       .hero-content {
-        width: 100%;
+        width: 100%
+     
       }
       .product-row {
       flex-direction: column !important;
@@ -958,13 +972,25 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <!-- <section class="hero">
     <div class="hero-content">
       <h1>FUTURE SHAPED BY CHOICE.</h1>
       <p>Fresh millet dosa batter delivered daily. Healthy, preservative-free, and crafted for modern lifestyles.</p>
       <a href="https://wa.me/919502487169" target="_blank" class="btn btn-dark">Order Now</a>
     </div>
-  </section>
+  </section> -->
+  <section class="hero">
+  <img src="images/hero-image.jpeg" class="hero-img" />
+
+  <div class="hero-content">
+    <h1>FUTURE SHAPED BY CHOICE.</h1>
+    <p>
+      Fresh millet dosa batter delivered daily. Healthy,
+      preservative-free, and crafted for modern lifestyles.
+    </p>
+    <a href="https://wa.me/919502487169" target="_blank" class="btn btn-dark">Order Now</a>
+  </div>
+</section>
 
 
 
